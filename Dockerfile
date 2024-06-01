@@ -17,8 +17,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update
 
-RUN apt-get install -y dotnet-sdk-8.0
-RUN apt-get install -y dotnet-sdk-6.0
+RUN apt-get install -y dotnet-sdk-8.0 aspnetcore-runtime-6.0 dotnet-runtime-6.0
 RUN cd /usr/share/dotnet/shared/Microsoft.NETCore.App/ && \
     ls 
 RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
