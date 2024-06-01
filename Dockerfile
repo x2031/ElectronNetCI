@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.10
 
 LABEL maintainer="x2031"
 LABEL description=".net基础环境镜像"
@@ -13,13 +13,14 @@ RUN apt-get install -y nodejs
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 
-RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN wget -q https://packages.microsoft.com/config/ubuntu/23.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update
 
 RUN apt-get install -y  dotnet-sdk-6.0
 RUN apt-get install -y  dotnet-sdk-8.0
 RUN dotnet --info
+RUN dotnet --list-sdks
 RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
 RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
 RUN dotnet tool install ElectronNET.CLI -g
