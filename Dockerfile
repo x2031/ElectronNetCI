@@ -12,10 +12,10 @@ RUN wget -O ./dotnet-install.sh https://dotnet.microsoft.com/download/dotnet/scr
 RUN chmod +x ./dotnet-install.sh
 RUN ./dotnet-install.sh --channel LTS
 #安装node
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-    apt-get install -y nodejs \
-    npm config set registry https://registry.npmmirror.com \
-    npm install -g npm
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
+RUN apt-get install -y nodejs
+RUN npm config set registry https://registry.npmmirror.com
+RUN npm install -g npm
 RUN dotnet tool install ElectronNET.CLI -g
 
 #清理垃圾文件
