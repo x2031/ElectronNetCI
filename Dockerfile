@@ -17,9 +17,7 @@ RUN apt-get install -y nodejs
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 
-RUN echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
-RUN echo 'export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools' >> ~/.bashrc
-RUN source ~/.bashrc
+RUN echo 'export PATH=$PATH:/usr/bin/dotnet' >> ~/.bashrc
 RUN dotnet tool install ElectronNET.CLI -g
 
 #清理垃圾文件
