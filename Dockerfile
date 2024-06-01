@@ -13,9 +13,9 @@ RUN apt-get install -y nodejs
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 
-RUN wget -q https://packages.microsoft.com/config/ubuntu/23.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-RUN dpkg -i packages-microsoft-prod.deb
-RUN apt-get update
+# RUN wget -q https://packages.microsoft.com/config/ubuntu/23.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+# RUN dpkg -i packages-microsoft-prod.deb
+# RUN apt-get update
 
 RUN apt-get install -y  dotnet-sdk-6.0
 RUN apt-get install -y  dotnet-sdk-8.0
