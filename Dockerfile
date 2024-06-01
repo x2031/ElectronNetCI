@@ -7,17 +7,13 @@ USER root
 
 RUN apt-get update && apt-get install -y && \   
     apt-get install -y wget curl gnupg
-# install dotnet
-RUN wget -O ./dotnet-install.sh https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh
-RUN chmod +x ./dotnet-install.sh
-RUN ./dotnet-install.sh --channel LTS
 #安装node
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
 RUN apt-get install -y nodejs
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 
-RUN echo 'export PATH=$PATH:/usr/bin/dotnet' >> ~/.bashrc
+RUN apt-get install -y dotnet-sdk-8.0
 RUN dotnet tool install ElectronNET.CLI -g
 
 #清理垃圾文件
