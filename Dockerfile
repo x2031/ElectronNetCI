@@ -19,6 +19,8 @@ RUN apt-get update
 
 RUN apt-get install -y dotnet-sdk-8.0
 RUN apt-get install -y dotnet-sdk-6.0
+RUN cd /usr/share/dotnet/shared/Microsoft.NETCore.App/ && \
+    ls 
 RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
 RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
 RUN dotnet tool install ElectronNET.CLI -g
