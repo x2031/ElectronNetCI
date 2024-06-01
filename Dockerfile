@@ -20,6 +20,7 @@ RUN apt-get update
 RUN apt-get install -y dotnet-sdk-8.0
 RUN dotnet tool install ElectronNET.CLI -g
 
+RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
 #清理垃圾文件
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
