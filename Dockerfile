@@ -13,7 +13,7 @@ RUN apt-get install -y nodejs
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 
-RUN wget -q https://packages.microsoft.com/config/$ID/$VERSION_ID/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update
 
