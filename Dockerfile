@@ -28,8 +28,8 @@ RUN sudo dpkg --add-architecture i386 \
     wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources \
     apt update \
-    apt install --install-recommends winehq-stable \
-    apt install --install-recommends winehq-stable wine-stable-amd64
+    apt install  -y --install-recommends winehq-stable \
+    apt install  -y --install-recommends winehq-stable wine-stable-amd64
 
 
 #清理垃圾文件
