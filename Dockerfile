@@ -19,11 +19,19 @@ RUN npm install -g npm
 
 RUN apt-get install -y  dotnet-sdk-6.0
 RUN apt-get install -y  dotnet-sdk-8.0
-RUN dotnet --info
-RUN dotnet --list-sdks
 RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
 RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
 RUN dotnet tool install ElectronNET.CLI -g
+
+RUN sudo dpkg --add-architecture i386 \
+    mkdir -pm755 /etc/apt/keyrings \
+    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources \
+    apt update \
+    apt install --install-recommends winehq-stable \
+    apt install --install-recommends winehq-stable wine-stable-amd64
+
+
 #清理垃圾文件
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
