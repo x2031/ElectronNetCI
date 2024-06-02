@@ -5,7 +5,7 @@ LABEL description=".net基础环境镜像"
 
 USER root
 
-RUN apt-get update && apt-get install -y && \   
+RUN apt-get update && apt-get install -y && \
     apt-get install -y wget curl gnupg apt-transport-https
 #安装node
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
@@ -23,13 +23,13 @@ RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
 RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
 RUN dotnet tool install ElectronNET.CLI -g
 
-RUN sudo dpkg --add-architecture i386 \
-    mkdir -pm755 /etc/apt/keyrings \
-    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
-    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources \
-    apt update \
-    apt install  -y --install-recommends winehq-stable \
-    apt install  -y --install-recommends winehq-stable wine-stable-amd64
+RUN dpkg --add-architecture i386
+RUN    mkdir -pm755 /etc/apt/keyrings 
+RUN    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key 
+RUN    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources 
+RUN    apt update 
+RUN    apt install  -y --install-recommends winehq-stable 
+RUN    apt install  -y --install-recommends winehq-stable wine-stable-amd64
 
 
 #清理垃圾文件
