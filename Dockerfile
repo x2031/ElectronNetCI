@@ -6,7 +6,8 @@ LABEL description=".net基础环境镜像"
 USER root
 
 RUN apt-get update && apt-get install -y && \
-    apt-get install -y wget curl gnupg apt-transport-https
+    apt-get install -y wget curl gnupg apt-transport-https \
+    apt-get install -y sshpass
 #安装node
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
 RUN apt-get install -y nodejs
