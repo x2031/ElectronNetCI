@@ -7,8 +7,8 @@ ENV TZ=Asia/Shanghai
 
 USER root
 RUN apt-get update && apt-get install -y && \
-    apt-get install -y wget curl gnupg apt-transport-https sshpass ssh openssh-client
-    
+    apt-get install -y wget curl gnupg apt-transport-https sshpass ssh openssh-client smbclient
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone  
 #安装node
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
