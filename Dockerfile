@@ -7,32 +7,25 @@ ENV TZ=Asia/Shanghai
 
 USER root
 RUN apt-get update && apt-get install -y && \
-    apt-get install -y wget curl gnupg apt-transport-https sshpass ssh openssh-client smbclient
+    apt-get install -y wget curl gnupg apt-transport-https 
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone  
 #安装node
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
-RUN apt-get install -y nodejs
-RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g npm
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+    apt-get install -y nodejs \
+    npm config set registry https://registry.npmmirror.com \
+    npm install -g npm
+RUN apt-get install -y  dotnet-sdk-6.0 \
+    apt-get install -y  dotnet-sdk-8.0 \
+    dotnet tool install ElectronNET.CLI -g
 
-# RUN wget -q https://packages.microsoft.com/config/ubuntu/23.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-# RUN dpkg -i packages-microsoft-prod.deb
-# RUN apt-get update
-
-RUN apt-get install -y  dotnet-sdk-6.0
-RUN apt-get install -y  dotnet-sdk-8.0
-RUN echo 'export PATH="$PATH:/usr/bin/dotnet"' >> ~/.bashrc
-RUN echo 'export PATH="$PATH:/root/.dotnet/tools"' >> ~/.bashrc
-RUN dotnet tool install ElectronNET.CLI -g
-
-RUN dpkg --add-architecture i386
-RUN    mkdir -pm755 /etc/apt/keyrings 
-RUN    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key 
-RUN    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources 
-RUN    apt update 
-RUN    apt install  -y --install-recommends winehq-stable 
-RUN    apt install  -y --install-recommends winehq-stable wine-stable-amd64
+RUN dpkg --add-architecture i386 \
+    mkdir -pm755 /etc/apt/keyrings \
+    wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources \
+    apt update \
+    apt install  -y --install-recommends winehq-stable \
+    apt install  -y --install-recommends winehq-stable wine-stable-amd64
 
 
 #清理垃圾文件
