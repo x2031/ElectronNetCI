@@ -13,7 +13,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #安装node
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
-RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g npm
 RUN apt-get install -y  dotnet-sdk-6.0
 RUN apt-get install -y  dotnet-sdk-8.0
