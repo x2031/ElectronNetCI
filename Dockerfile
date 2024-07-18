@@ -27,6 +27,6 @@ RUN apt install  -y --install-recommends winehq-stable
 RUN apt install  -y --install-recommends winehq-stable wine-stable-amd64
 
 
-#清理垃圾文件
+#清理垃圾
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
