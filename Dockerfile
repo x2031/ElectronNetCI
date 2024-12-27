@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.10
 
 LABEL maintainer="x2031"
 LABEL description=".net基础环境镜像"
