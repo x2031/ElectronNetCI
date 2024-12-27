@@ -1,4 +1,4 @@
-FROM ubuntu:23.10
+FROM ubuntu:22.04
 
 LABEL maintainer="x2031"
 LABEL description=".net基础环境镜像"
@@ -6,9 +6,9 @@ LABEL description=".net基础环境镜像"
 ENV TZ=Asia/Shanghai
 
 USER root
-RUN apt-get update
-RUN apt-get install -y wget curl  sshpass  openssh-client
-RUN apt-get install -y openjdk-17-jre
+RUN apt update
+RUN apt install -y wget curl  sshpass  openssh-client
+RUN apt install -y openjdk-17-jre
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone  
 #安装node
