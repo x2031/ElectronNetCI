@@ -8,6 +8,7 @@ ENV TZ=Asia/Shanghai
 USER root
 RUN apt-get update && apt-get install -y && \
     apt-get install -y wget curl gnupg apt-transport-https sshpass  openssh-client
+RUN apt-get install -y openjdk-17-jre
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone  
 #安装node
